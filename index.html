@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2026 FIFA World Cup Fixtures</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Layer 1: Pixel art canvas background (pitch + legends) — injected by bg.js -->
+  <script src="bg.js"></script>
+
+  <!-- Layer 2: Main panel -->
+  <div class="panel">
+    <div class="panel-header">
+      <div class="brand">
+        <img class="wc-logo" src="world-cup-2026-logo.png" alt="FIFA World Cup 2026">
+        <div class="brand-text">
+          <span class="brand-label">FIFA World Cup</span>
+          <span class="brand-year">2026</span>
+        </div>
+      </div>
+      <div class="clock-block">
+        <div class="clock">
+          <span id="clock-h">00</span><span class="colon">:</span><span id="clock-m">00</span><span class="colon">:</span><span id="clock-s">00</span>
+        </div>
+        <div class="timezone" id="timezone">Loading…</div>
+      </div>
+    </div>
+
+    <div class="divider"><div class="divider-shimmer"></div></div>
+
+    <div class="fixtures" id="fixtures"></div>
+  </div>
+
+  <script src="fixtures.js"></script>
+  <script src="wallpaper.js"></script>
+</body>
+</html>
