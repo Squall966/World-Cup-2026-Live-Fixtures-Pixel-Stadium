@@ -1,6 +1,6 @@
 # Handoff — 2026 World Cup Fixtures Wallpaper
 
-_Last updated: 2026-06-17_
+_Last updated: 2026-06-19_
 
 ## Goal
 
@@ -10,33 +10,29 @@ pixel-art stadium:
 - Today / Tomorrow fixtures with country flags, kickoff times, countdowns, LIVE/FT badges
 - Pixel-art stadium background: night sky, crowd + camera flashes, floodlights, a football
   pitch, and 9 animated "football legend" sprites walking around it (Dave-the-Diver style)
+- **English / 中文 language toggle** via Wallpaper Engine settings panel
 
-**Immediate goal this session: publish to the Steam Workshop** (the code is considered done).
-Loads via: Wallpaper Engine → Workshop → Create Wallpaper → Web → browse to this folder.
+**Published on Steam Workshop** — ID `3746399994`, URL `steam://url/CommunityFilePage/3746399994`.
 
 ---
 
 ## Current State
 
-**Code works.** This session verified `bg.js` + the panel run cleanly:
-- `node --check` passes on `bg.js`, `wallpaper.js`, `fixtures.js`.
-- A headless-Chrome CDP probe at 1920×1080 (Chromium = same engine as WE's CEF) ran for 10s:
-  **no exceptions, no console errors**, `bg-canvas` built (1904×985), 10 fixture cards
-  rendered, clock ticking, JS heap only ~10 MB. So there is **no JS bug at normal resolution**.
+**Published and working.** The wallpaper is live on the Steam Workshop.
 
-**Uncommitted:** `bg.js` (the legend-art pass — see below) and `handoff.md` are modified but
-not yet committed. Everything else is committed.
+Branch `feat/chinese-support` contains all Chinese language support work and is ready to merge to `main` via PR.
 
-> ⚠️ The other deletions shown in `git status` (`.../Tassal/dev/app-b/...`, `stallion-fieldays`)
-> are **unrelated files from other projects** sharing this git repo — leave them alone.
+**Chinese language support (feat/chinese-support):**
+- `wallpaper.js` — `STRINGS`, `TEAM_ZH` (48 teams), `setLanguage()`, `wallpaperPropertyListener`, language-aware `stageShort()` / `formatCountdown()` / `teamName()`
+- `style.css` — ZCOOL QingKe HuangYou Google Font + `:lang(zh)` CSS rules
+- `index.html` — Google Fonts link updated with the Chinese font family
+- `project.json` — WE-generated file (backup copy) with `language` combo property added inside `general.properties`
 
-### Legend-art pass (uncommitted, all in `bg.js`)
-- Shirt numbers replace name labels: 3×5 pixel-digit font (`DIGITS`), small/centred on chest,
-  never mirrored, auto-contrast ink via `lum()`.
-- Per-legend face traits: `sideburns` (Pelé), `stubble` (Maradona/Zidane/CR7/Batistuta),
-  `teeth` grin (R9/Ronaldinho), `beard` (Messi); hairstyles `r9cut`, `messi`, bald Zidane.
-- Pitch inset with crowd on all four sides (`pitchLeft`/`pitchW` globals; `drawCrowd()` takes
-  an x-range).
+**`project.json` — important notes:**
+- WE generates and manages `project.json` itself. Do NOT create a custom one; it causes WE to crash.
+- The copy in this repo is the WE-generated file (includes `workshopid` `3746399994`) with the `language` property manually added inside `general.properties`.
+- To add language support to WE's own copy, insert the `language` combo block inside `general` → `properties` alongside `schemecolor`. See README for the exact JSON snippet.
+- WE combo property docs: https://docs.wallpaperengine.io/en/web/customization/properties.html
 
 ---
 
@@ -76,17 +72,11 @@ from the user's side, and the session pivoted to publishing.
 
 ---
 
-## Next step
+## Next steps
 
-1. **Record the real fix.** Ask the user what they found/changed that stopped the crash, and note
-   it here — right now the root cause is officially unknown (my multi-monitor hypothesis was never
-   confirmed). If it was a resolution/memory issue, consider hardening `bg.js` (cap canvas pixel
-   size, debounce the `resize→init` rebuild) so it can't recur for other users on big displays.
-2. **Pick the Workshop name + description.** Options were proposed this session; recommended name:
-   **"World Cup 2026 — Live Fixtures & Pixel Stadium"** with the full feature-list description.
-3. **Update `project.json` `title`** to match the chosen name.
-4. **Commit** the uncommitted `bg.js` legend-art pass + this handoff (only this project's files).
-5. **Publish** to the Steam Workshop from Wallpaper Engine; set tags (sports/football/clock/pixel).
+1. **Test the language toggle in WE.** Add the `language` combo property to WE's own `project.json` (see above / README), reload the wallpaper in WE, and confirm the Language dropdown appears and switching to 中文 works.
+2. **Merge `feat/chinese-support` → `main`** via the open PR once the language toggle is confirmed working in WE.
+3. **Publish update to Steam Workshop** — open the wallpaper in WE and click Publish to push the Chinese support update to subscribers.
 
 ---
 

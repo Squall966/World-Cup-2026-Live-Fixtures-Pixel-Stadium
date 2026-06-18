@@ -31,13 +31,37 @@ After importing the wallpaper, open its settings panel in Wallpaper Engine and s
 
 ## Importing into Wallpaper Engine
 
+This wallpaper is already published on the Steam Workshop (ID `3746399994`). You can subscribe directly, or load it locally:
+
 1. Open **Wallpaper Engine**
 2. Click **Workshop** in the top menu, then **Create Wallpaper**
 3. Select **Web** as the wallpaper type
 4. Click **Browse** and navigate to this folder — select `index.html`
 5. Wallpaper Engine will load the wallpaper and display it in the preview
 6. To access settings (including the Language dropdown), click the **gear icon** on the wallpaper in the preview
-7. To publish to the Steam Workshop, click **Publish** and fill in the title and description
+
+### About `project.json`
+
+Wallpaper Engine generates and manages `project.json` itself when you create or publish a wallpaper. The copy committed in this repo is the WE-generated file (including `workshopid`, `workshopurl`, etc.) with the `language` property added inside `general.properties`. It serves as a reference backup — **do not replace WE's copy with a custom one**, as this can cause WE to crash.
+
+To add the language property to WE's own `project.json`, insert the following block inside `general` → `properties` alongside `schemecolor`:
+
+```json
+"language" :
+{
+    "order" : 1,
+    "text" : "Language",
+    "type" : "combo",
+    "value" : "en",
+    "options" :
+    [
+        { "label" : "English", "value" : "en" },
+        { "label" : "中文",    "value" : "zh" }
+    ]
+}
+```
+
+Official WE property docs: https://docs.wallpaperengine.io/en/web/customization/properties.html
 
 > The wallpaper requires an internet connection at load time to fetch country flag images (flagcdn.com) and Google Fonts. It works fully offline after the first load if fonts are cached.
 
@@ -50,7 +74,7 @@ After importing the wallpaper, open its settings panel in Wallpaper Engine and s
 | `fixtures.js` | All 104 World Cup 2026 fixtures as a static JS array |
 | `bg.js` | Pixel-art stadium canvas background and legend sprite animation |
 | `style.css` | Gold Trophy theme, responsive layout, keyframe animations |
-| `project.json` | Wallpaper Engine manifest — defines the Language setting |
+| `project.json` | WE-generated manifest (backup copy) — includes the Language combo property |
 | `world-cup-2026-logo.png` | Logo displayed in the panel header |
 
 ## Updating Fixtures
