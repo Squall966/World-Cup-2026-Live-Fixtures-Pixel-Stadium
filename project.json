@@ -1,0 +1,19 @@
+{
+  "title": "World Cup 2026 — Live Fixtures & Pixel Stadium",
+  "type": "web",
+  "file": "index.html",
+  "preview": "world-cup-2026-logo.png",
+  "general": { "supportsaudioprocessing": false },
+  "properties": {
+    "language": {
+      "order": 1,
+      "text": "Language",
+      "type": "combo",
+      "value": "en",
+      "options": [
+        { "label": "English", "value": "en" },
+        { "label": "中文",    "value": "zh" }
+      ]
+    }
+  }
+}
