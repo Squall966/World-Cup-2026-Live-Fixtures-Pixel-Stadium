@@ -1,0 +1,40 @@
+{
+    "contentrating" : "Everyone",
+    "description" : "FIFA World Cup 2026 — Live Fixtures Wallpaper\n\nA retro pixel-art stadium that keeps you on top of the tournament:\n- Live clock (HH:MM:SS) with auto-detected timezone — fixtures show in your local time, anywhere in the world\n- Today & Tomorrow fixtures with real country flags, kickoff times, live \"in 2h 14m\" countdowns, and LIVE / FT badges\n- Football legends stroll the pitch in pixel form — Pelé, Maradona, Ronaldo R9, Zidane, Ronaldinho, Messi, Cristiano, Beckham & Batistuta\n- Lightweight, low-resource, and updates automatically as match day rolls over. Covers all 104 matches — group stage through the final.",
+    "file" : "index.html",
+    "general" :
+    {
+        "properties" :
+        {
+            "schemecolor" :
+            {
+                "order" : 0,
+                "text" : "ui_browse_properties_scheme_color",
+                "type" : "color",
+                "value" : "0 0 0"
+            },
+            "language" :
+            {
+                "order" : 1,
+                "text" : "Language",
+                "type" : "combo",
+                "value" : "en",
+                "options" :
+                [
+                    { "label" : "English", "value" : "en" },
+                    { "label" : "中文",    "value" : "zh" }
+                ]
+            }
+        }
+    },
+    "preview" : "preview.jpg",
+    "ratingsex" : "none",
+    "ratingviolence" : "none",
+    "tags" : [ "Sports" ],
+    "title" : "World Cup 2026 — Live Fixtures & Pixel Stadium",
+    "type" : "web",
+    "version" : 2,
+    "visibility" : "public",
+    "workshopid" : "3746399994",
+    "workshopurl" : "steam://url/CommunityFilePage/3746399994"
+}
