@@ -7,6 +7,43 @@
 
   let _lastFingerprint = '';
   let _lastDateStr     = '';
+  let _lang            = 'en';
+
+  const STRINGS = {
+    en: {
+      today:        'Today',
+      tomorrow:     'Tomorrow',
+      noMatches:    'No matches today or tomorrow',
+      live:         'LIVE',
+      ft:           'FT',
+      startingSoon: 'starting soon',
+      countdown:    (h, m) => h > 0 ? `in ${h}h ${m}m` : `in ${m}m`,
+    },
+    zh: {
+      today:        '今日比赛',
+      tomorrow:     '明日比赛',
+      noMatches:    '今明两日没有比赛',
+      live:         '比赛进行中',
+      ft:           '终场',
+      startingSoon: '即将开始',
+      countdown:    (h, m) => h > 0 ? `${h}小时${m}分后` : `${m}分钟后`,
+    }
+  };
+
+  const TEAM_ZH = {
+    'Mexico': '墨西哥', 'South Africa': '南非', 'South Korea': '韩国', 'Czechia': '捷克',
+    'Canada': '加拿大', 'Bosnia & Herzegovina': '波黑', 'Switzerland': '瑞士', 'Qatar': '卡塔尔',
+    'Brazil': '巴西', 'Morocco': '摩洛哥', 'Haiti': '海地', 'Scotland': '苏格兰',
+    'USA': '美国', 'Paraguay': '巴拉圭', 'Australia': '澳大利亚', 'Türkiye': '土耳其',
+    'Germany': '德国', 'Curaçao': '库拉索', 'Ivory Coast': '科特迪瓦', 'Ecuador': '厄瓜多尔',
+    'Netherlands': '荷兰', 'Japan': '日本', 'Sweden': '瑞典', 'Tunisia': '突尼斯',
+    'Belgium': '比利时', 'Egypt': '埃及', 'Iran': '伊朗', 'New Zealand': '新西兰',
+    'Spain': '西班牙', 'Cape Verde': '佛得角', 'Saudi Arabia': '沙特阿拉伯', 'Uruguay': '乌拉圭',
+    'France': '法国', 'Senegal': '塞内加尔', 'Iraq': '伊拉克', 'Norway': '挪威',
+    'Argentina': '阿根廷', 'Algeria': '阿尔及利亚', 'Austria': '奥地利', 'Jordan': '约旦',
+    'Portugal': '葡萄牙', 'DR Congo': '刚果民主共和国', 'Uzbekistan': '乌兹别克斯坦', 'Colombia': '哥伦比亚',
+    'England': '英格兰', 'Croatia': '克罗地亚', 'Ghana': '加纳', 'Panama': '巴拿马',
+  };
 
   // ── Flag image lookup (ISO 3166-1 alpha-2 codes for flagcdn.com) ────────
   const FLAG_CODES = {
@@ -84,6 +121,14 @@
     return new Intl.DateTimeFormat('en', {
       hour: '2-digit', minute: '2-digit', hour12: false, timeZone: TZ
     }).format(matchDate);
+  }
+
+  // ── Language ──────────────────────────────────────────────────────────
+
+  function setLanguage(code) {
+    _lang = code === 'zh' ? 'zh' : 'en';
+    document.documentElement.lang = _lang === 'zh' ? 'zh-CN' : 'en';
+    _lastFingerprint = '';
   }
 
   // ── Timezone display ───────────────────────────────────────────────────
@@ -244,6 +289,21 @@
     ok('cd-hm',  formatCountdown(new Date(t0.getTime() + 5*3600000 + 28*60000), t0) === 'in 5h 28m');
     ok('cd-m',   formatCountdown(new Date(t0.getTime() + 45*60000), t0) === 'in 45m');
     ok('cd-null',formatCountdown(new Date(t0.getTime() - 1000),     t0) === null);
+    const savedLang = _lang;
+    setLanguage('zh');
+    ok('zh-strings-today',    STRINGS.zh.today === '今日比赛');
+    ok('zh-strings-tomorrow', STRINGS.zh.tomorrow === '明日比赛');
+    ok('zh-strings-live',     STRINGS.zh.live === '比赛进行中');
+    ok('zh-strings-ft',       STRINGS.zh.ft === '终场');
+    ok('zh-team-brazil',      TEAM_ZH['Brazil'] === '巴西');
+    ok('zh-team-england',     TEAM_ZH['England'] === '英格兰');
+    ok('zh-team-usa',         TEAM_ZH['USA'] === '美国');
+    ok('zh-lang-var',         _lang === 'zh');
+    ok('zh-html-lang',        document.documentElement.lang === 'zh-CN');
+    setLanguage('en');
+    ok('en-lang-restored',    _lang === 'en');
+    ok('en-html-lang',        document.documentElement.lang === 'en');
+    setLanguage(savedLang);
     console.log('%c✓ wallpaper.js dev tests passed', 'color:#d4af37');
   }
 
@@ -268,6 +328,13 @@
       updateCountdown(now, today, tomorrow);  // only patch the countdown text
     }
   }
+
+  // ── Wallpaper Engine property listener ────────────────────────────────
+  window.wallpaperPropertyListener = {
+    applyUserProperties(props) {
+      if (props.language) setLanguage(props.language.value);
+    }
+  };
 
   // ── Init ───────────────────────────────────────────────────────────────
   initTimezone();
