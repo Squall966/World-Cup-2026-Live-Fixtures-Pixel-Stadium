@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&family=ZCOOL+QingKe+HuangYou&display=swap');
 
 /* ─── Reset & base ────────────────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -487,4 +487,15 @@ body::after {
     margin-top: clamp(10px, 2.5vw, 14px);
     margin-bottom: clamp(6px, 1.5vw, 10px);
   }
+}
+
+/* ─── Chinese language font overrides ────────────────────────────────── */
+:lang(zh) .team-name,
+:lang(zh) .section-label,
+:lang(zh) .no-matches,
+:lang(zh) .match-badge,
+:lang(zh) .match-countdown,
+:lang(zh) .match-stage,
+:lang(zh) .brand-label {
+  font-family: 'ZCOOL QingKe HuangYou', sans-serif;
 }
