@@ -495,6 +495,19 @@ body::after {
 :lang(zh) .no-matches,
 :lang(zh) .match-badge,
 :lang(zh) .match-countdown,
-:lang(zh) .match-stage {
+:lang(zh) .match-stage,
+:lang(zh) .brand-label,
+:lang(zh) .timezone {
   font-family: 'ZCOOL QingKe HuangYou', sans-serif;
+}
+
+/* ZCOOL renders smaller than Press Start 2P at the same px — bump sizes for legibility */
+:lang(zh) .brand-label {
+  font-size: clamp(12px, 1.0vw, 16px);
+  letter-spacing: 0.04em;
+}
+
+:lang(zh) .section-label {
+  font-size: clamp(13px, 1.05vw, 17px);
+  letter-spacing: 0.04em;
 }

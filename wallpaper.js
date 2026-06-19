@@ -11,6 +11,7 @@
 
   const STRINGS = {
     en: {
+      brandLabel:   'FIFA World Cup',
       today:        'Today',
       tomorrow:     'Tomorrow',
       noMatches:    'No matches today or tomorrow',
@@ -20,6 +21,7 @@
       countdown:    (h, m) => h > 0 ? `in ${h}h ${m}m` : `in ${m}m`,
     },
     zh: {
+      brandLabel:   'FIFA世界杯',
       today:        '今日比赛',
       tomorrow:     '明日比赛',
       noMatches:    '今明两日没有比赛',
@@ -136,19 +138,26 @@
   function setLanguage(code) {
     _lang = code === 'zh' ? 'zh' : 'en';
     document.documentElement.lang = _lang === 'zh' ? 'zh-CN' : 'en';
+    document.querySelector('.brand-label').textContent = STRINGS[_lang].brandLabel;
+    renderTimezone();
     _lastFingerprint = '';
   }
 
   // ── Timezone display ───────────────────────────────────────────────────
 
-  function initTimezone() {
+  function renderTimezone() {
     const now = new Date();
+    const locale = _lang === 'zh' ? 'zh-CN' : 'en';
     const offset = new Intl.DateTimeFormat('en', { timeZoneName: 'shortOffset', timeZone: TZ })
       .formatToParts(now).find(p => p.type === 'timeZoneName').value
       .replace('GMT', 'UTC');
-    const longName = new Intl.DateTimeFormat('en', { timeZoneName: 'long', timeZone: TZ })
+    const longName = new Intl.DateTimeFormat(locale, { timeZoneName: 'long', timeZone: TZ })
       .formatToParts(now).find(p => p.type === 'timeZoneName').value;
     document.getElementById('timezone').textContent = `${offset} · ${longName}`;
+  }
+
+  function initTimezone() {
+    renderTimezone();
   }
 
   // ── Clock ──────────────────────────────────────────────────────────────
@@ -305,6 +314,7 @@
     ok('cd-null',formatCountdown(new Date(t0.getTime() - 1000),     t0) === null);
     const savedLang = _lang;
     setLanguage('zh');
+    ok('zh-strings-brandLabel', STRINGS.zh.brandLabel === 'FIFA世界杯');
     ok('zh-strings-today',    STRINGS.zh.today === '今日比赛');
     ok('zh-strings-tomorrow', STRINGS.zh.tomorrow === '明日比赛');
     ok('zh-strings-live',     STRINGS.zh.live === '比赛进行中');
@@ -333,6 +343,7 @@
     ok('zh-teamname-brazil', teamName('Brazil') === '巴西');
     ok('zh-teamname-stub',   teamName('1A') === '1A');
     setLanguage('en');
+    ok('en-strings-brandLabel', STRINGS.en.brandLabel === 'FIFA World Cup');
     ok('en-stage-groupA',    stageShort('Group A') === 'GRP A');
     ok('en-stage-r16',       stageShort('Round of 16') === 'R16');
     ok('en-cd-hm',           formatCountdown(new Date(t0.getTime() + 5*3600000 + 28*60000), t0) === 'in 5h 28m');
