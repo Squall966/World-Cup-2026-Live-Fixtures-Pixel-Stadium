@@ -96,6 +96,7 @@ body::after {
   text-transform: uppercase;
   letter-spacing: 0.08em;
   line-height: 1.4;
+  white-space: nowrap;
 }
 
 .brand-year {
