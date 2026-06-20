@@ -177,6 +177,8 @@
     document.getElementById('clock-h').textContent = parts.find(p => p.type === 'hour').value;
     document.getElementById('clock-m').textContent = parts.find(p => p.type === 'minute').value;
     document.getElementById('clock-s').textContent = parts.find(p => p.type === 'second').value;
+    document.getElementById('clock-ampm').textContent =
+      _timeFormat === '12h' ? (parts.find(p => p.type === 'dayPeriod')?.value ?? '') : '';
   }
 
   // ── Filtering ──────────────────────────────────────────────────────────
