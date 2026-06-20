@@ -26,16 +26,16 @@ const FIXTURES = [
   { id:"gC1", date:"2026-06-13", time:"22:00", homeTeam:"Brazil",       homeFlag:"🇧🇷", awayTeam:"Morocco",       awayFlag:"🇲🇦", stage:"Group C", venue:"MetLife Stadium, East Rutherford" },
   { id:"gC2", date:"2026-06-14", time:"01:00", homeTeam:"Haiti",        homeFlag:"🇭🇹", awayTeam:"Scotland",      awayFlag:"🏴󠁧󠁢󠁳󠁣󠁴󠁿", stage:"Group C", venue:"Gillette Stadium, Foxborough" },
   { id:"gC3", date:"2026-06-19", time:"22:00", homeTeam:"Scotland",     homeFlag:"🏴󠁧󠁢󠁳󠁣󠁴󠁿", awayTeam:"Morocco",    awayFlag:"🇲🇦", stage:"Group C", venue:"Gillette Stadium, Foxborough" },
-  { id:"gC4", date:"2026-06-20", time:"01:00", homeTeam:"Brazil",       homeFlag:"🇧🇷", awayTeam:"Haiti",         awayFlag:"🇭🇹", stage:"Group C", venue:"Lincoln Financial Field, Philadelphia" },
+  { id:"gC4", date:"2026-06-20", time:"00:30", homeTeam:"Brazil",       homeFlag:"🇧🇷", awayTeam:"Haiti",         awayFlag:"🇭🇹", stage:"Group C", venue:"Lincoln Financial Field, Philadelphia" },
   { id:"gC5", date:"2026-06-24", time:"22:00", homeTeam:"Scotland",     homeFlag:"🏴󠁧󠁢󠁳󠁣󠁴󠁿", awayTeam:"Brazil",     awayFlag:"🇧🇷", stage:"Group C", venue:"Hard Rock Stadium, Miami Gardens" },
   { id:"gC6", date:"2026-06-24", time:"22:00", homeTeam:"Morocco",      homeFlag:"🇲🇦", awayTeam:"Haiti",         awayFlag:"🇭🇹", stage:"Group C", venue:"Mercedes-Benz Stadium, Atlanta" },
 
   // ── GROUP D ── USA · Paraguay · Australia · Türkiye
   // Venues: SoFi Stadium (Inglewood) · BC Place (Vancouver) · Lumen Field (Seattle) · Levi's Stadium (Santa Clara)
-  { id:"gD1", date:"2026-06-12", time:"22:00", homeTeam:"USA",          homeFlag:"🇺🇸", awayTeam:"Paraguay",      awayFlag:"🇵🇾", stage:"Group D", venue:"SoFi Stadium, Inglewood" },
-  { id:"gD2", date:"2026-06-13", time:"04:00", homeTeam:"Australia",    homeFlag:"🇦🇺", awayTeam:"Türkiye",       awayFlag:"🇹🇷", stage:"Group D", venue:"BC Place, Vancouver" },
+  { id:"gD1", date:"2026-06-13", time:"01:00", homeTeam:"USA",          homeFlag:"🇺🇸", awayTeam:"Paraguay",      awayFlag:"🇵🇾", stage:"Group D", venue:"SoFi Stadium, Inglewood" },
+  { id:"gD2", date:"2026-06-14", time:"04:00", homeTeam:"Australia",    homeFlag:"🇦🇺", awayTeam:"Türkiye",       awayFlag:"🇹🇷", stage:"Group D", venue:"BC Place, Vancouver" },
   { id:"gD3", date:"2026-06-19", time:"19:00", homeTeam:"USA",          homeFlag:"🇺🇸", awayTeam:"Australia",     awayFlag:"🇦🇺", stage:"Group D", venue:"Lumen Field, Seattle" },
-  { id:"gD4", date:"2026-06-20", time:"04:00", homeTeam:"Türkiye",      homeFlag:"🇹🇷", awayTeam:"Paraguay",      awayFlag:"🇵🇾", stage:"Group D", venue:"Levi's Stadium, Santa Clara" },
+  { id:"gD4", date:"2026-06-20", time:"03:00", homeTeam:"Türkiye",      homeFlag:"🇹🇷", awayTeam:"Paraguay",      awayFlag:"🇵🇾", stage:"Group D", venue:"Levi's Stadium, Santa Clara" },
   { id:"gD5", date:"2026-06-26", time:"02:00", homeTeam:"Türkiye",      homeFlag:"🇹🇷", awayTeam:"USA",           awayFlag:"🇺🇸", stage:"Group D", venue:"SoFi Stadium, Inglewood" },
   { id:"gD6", date:"2026-06-26", time:"02:00", homeTeam:"Paraguay",     homeFlag:"🇵🇾", awayTeam:"Australia",     awayFlag:"🇦🇺", stage:"Group D", venue:"Levi's Stadium, Santa Clara" },
 
@@ -51,7 +51,7 @@ const FIXTURES = [
   // ── GROUP F ── Netherlands · Japan · Sweden · Tunisia
   // Venues: AT&T Stadium (Arlington) · Estadio BBVA (Monterrey) · NRG Stadium (Houston) · Arrowhead Stadium (Kansas City)
   { id:"gF1", date:"2026-06-14", time:"20:00", homeTeam:"Netherlands",  homeFlag:"🇳🇱", awayTeam:"Japan",         awayFlag:"🇯🇵", stage:"Group F", venue:"AT&T Stadium, Arlington" },
-  { id:"gF2", date:"2026-06-15", time:"00:00", homeTeam:"Sweden",       homeFlag:"🇸🇪", awayTeam:"Tunisia",       awayFlag:"🇹🇳", stage:"Group F", venue:"Estadio BBVA, Monterrey" },
+  { id:"gF2", date:"2026-06-15", time:"02:00", homeTeam:"Sweden",       homeFlag:"🇸🇪", awayTeam:"Tunisia",       awayFlag:"🇹🇳", stage:"Group F", venue:"Estadio BBVA, Monterrey" },
   { id:"gF3", date:"2026-06-20", time:"17:00", homeTeam:"Netherlands",  homeFlag:"🇳🇱", awayTeam:"Sweden",        awayFlag:"🇸🇪", stage:"Group F", venue:"NRG Stadium, Houston" },
   { id:"gF4", date:"2026-06-21", time:"04:00", homeTeam:"Tunisia",      homeFlag:"🇹🇳", awayTeam:"Japan",         awayFlag:"🇯🇵", stage:"Group F", venue:"Estadio BBVA, Monterrey" },
   { id:"gF5", date:"2026-06-25", time:"23:00", homeTeam:"Japan",        homeFlag:"🇯🇵", awayTeam:"Sweden",        awayFlag:"🇸🇪", stage:"Group F", venue:"AT&T Stadium, Arlington" },
