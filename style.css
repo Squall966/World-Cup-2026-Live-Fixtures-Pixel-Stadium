@@ -38,7 +38,10 @@ body::after {
 
 /* ─── Panel — pixel art double-border box ──────────────────────────────── */
 .panel {
-  position: relative;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
   width: clamp(600px, 48vw, 1600px);
   min-height: clamp(280px, 38vh, 440px);
   max-height: calc(100vh - clamp(160px, 20vh, 300px));

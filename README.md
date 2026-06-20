@@ -57,7 +57,7 @@ This wallpaper is already published on the Steam Workshop (ID `3746399994`). You
 3. Select **Web** as the wallpaper type
 4. Click **Browse** and navigate to this folder — select `index.html`
 5. Wallpaper Engine will load the wallpaper and display it in the preview
-6. To access settings (including the Language dropdown), click the **gear icon** on the wallpaper in the preview
+6. To access settings (including the **Language** and **Time Format** dropdowns), click the **gear icon** on the wallpaper in the preview
 
 ### About `project.json`
 
@@ -105,7 +105,7 @@ Official WE property docs: https://docs.wallpaperengine.io/en/web/customization/
 | `fixtures.js` | All 104 World Cup 2026 fixtures as a static JS array |
 | `bg.js` | Pixel-art stadium canvas background and legend sprite animation |
 | `style.css` | Gold Trophy theme, responsive layout, keyframe animations |
-| `project.json` | WE-generated manifest (backup copy) — includes the Language combo property |
+| `project.json` | WE-generated manifest (backup copy) — includes the Language and Time Format combo properties |
 | `world-cup-2026-logo.png` | Logo displayed in the panel header |
 
 ## Updating Fixtures
