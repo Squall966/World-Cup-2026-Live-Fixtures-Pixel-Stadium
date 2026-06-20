@@ -8,6 +8,7 @@
   let _lastFingerprint = '';
   let _lastDateStr     = '';
   let _lang            = 'en';
+  let _timeFormat      = '24h';
 
   const STRINGS = {
     en: {
@@ -129,11 +130,17 @@
 
   function formatLocalTime(matchDate) {
     return new Intl.DateTimeFormat('en', {
-      hour: '2-digit', minute: '2-digit', hour12: false, timeZone: TZ
+      hour: '2-digit', minute: '2-digit',
+      hour12: _timeFormat === '12h', timeZone: TZ
     }).format(matchDate);
   }
 
   // ── Language ──────────────────────────────────────────────────────────
+
+  function setTimeFormat(fmt) {
+    _timeFormat = fmt === '12h' ? '12h' : '24h';
+    _lastFingerprint = '';  // force match card re-render
+  }
 
   function setLanguage(code) {
     _lang = code === 'zh' ? 'zh' : 'en';
@@ -165,11 +172,13 @@
   function updateClock(now) {
     const parts = new Intl.DateTimeFormat('en', {
       hour: '2-digit', minute: '2-digit', second: '2-digit',
-      hour12: false, timeZone: TZ
+      hour12: _timeFormat === '12h', timeZone: TZ
     }).formatToParts(now);
     document.getElementById('clock-h').textContent = parts.find(p => p.type === 'hour').value;
     document.getElementById('clock-m').textContent = parts.find(p => p.type === 'minute').value;
     document.getElementById('clock-s').textContent = parts.find(p => p.type === 'second').value;
+    document.getElementById('clock-ampm').textContent =
+      _timeFormat === '12h' ? (parts.find(p => p.type === 'dayPeriod')?.value ?? '') : '';
   }
 
   // ── Filtering ──────────────────────────────────────────────────────────
@@ -350,6 +359,16 @@
     ok('en-cd-m',            formatCountdown(new Date(t0.getTime() + 45*60000), t0) === 'in 45m');
     ok('en-teamname-brazil', teamName('Brazil') === 'Brazil');
     setLanguage(savedLang);
+    const savedFmt = _timeFormat;
+    setTimeFormat('12h');
+    ok('12h-format-var',       _timeFormat === '12h');
+    ok('12h-formatLocalTime',  typeof formatLocalTime(new Date('2026-06-20T12:00:00Z')) === 'string');
+    ok('12h-fingerprint-reset', _lastFingerprint === '');
+    setTimeFormat('24h');
+    ok('24h-format-restored',  _timeFormat === '24h');
+    setTimeFormat('invalid');
+    ok('invalid-falls-back-24h', _timeFormat === '24h');
+    setTimeFormat(savedFmt);
     console.log('%c✓ wallpaper.js dev tests passed', 'color:#d4af37');
   }
 
@@ -378,7 +397,8 @@
   // ── Wallpaper Engine property listener ────────────────────────────────
   window.wallpaperPropertyListener = {
     applyUserProperties(props) {
-      if (props.language) setLanguage(props.language.value);
+      if (props.language)   setLanguage(props.language.value);
+      if (props.timeformat) setTimeFormat(props.timeformat.value);
     }
   };
 
