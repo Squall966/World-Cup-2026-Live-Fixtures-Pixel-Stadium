@@ -1,69 +1,61 @@
 # Handoff — 2026 World Cup Fixtures Wallpaper
 
-_Last updated: 2026-06-20_
+_Last updated: 2026-06-28_
 
-## Current state: `main` is clean and up to date
+## Current state: `update/knock-out-32` — ready for PR
 
-All work from the last two sessions is merged. There is no active feature branch. The wallpaper is in a shippable state.
+All Round of 32 fixtures have been confirmed and committed. The branch is pushed and awaiting merge.
 
 ---
 
-## What was shipped (merged to main 2026-06-20)
+## What was shipped (this session)
 
-### 1. 12h / 24h time format toggle
-- `project.json` — `timeformat` combo property (order 2), default `24h`
-- `wallpaper.js` — `_timeFormat` state var; `setTimeFormat(fmt)` resets fingerprint to force re-render; `updateClock()` and `formatLocalTime()` both use `hour12: _timeFormat === '12h'`; wired into `wallpaperPropertyListener`; 5 devTest assertions added
+### 1. Round of 32 fixtures — confirmed bracket
+- All 16 R32 entries in `fixtures.js` replaced from placeholder stubs (`1A`, `2C`, `3rd` etc.) to real teams, correct UTC kick-off times, and correct venues.
+- Times verified across **Fox Sports**, **NBC Sports**, **Sky Sports**, and **CBS Sports**. FIFA.com was attempted but returned no content.
+- One previously ambiguous match (USA vs Bosnia & Herzegovina, r32-10) confirmed at `2026-07-02 00:00 UTC` (8 PM ET July 1) — consistent across Fox and NBC.
+- R32 now runs **June 28 – July 4 (01:30 UTC)**; r32-16 (Colombia vs Croatia) is the last match at Arrowhead, Kansas City.
 
-### 2. AM/PM on the main clock in 12h mode
-- `index.html` — `<span id="clock-ampm"></span>` added inline after `#clock-s`
-- `wallpaper.js` — `updateClock()` extracts `dayPeriod` from `formatToParts()` and writes it to `#clock-ampm`; cleared in 24h mode
-- `style.css` — `#clock-ampm` styled at `font-size: 0.4em`, `vertical-align: top`, `margin-left: 0.2em`, slightly dimmer gold (`rgba(255,215,0,0.75)`)
+| r32 # | Home | Away | UTC | Venue |
+|---|---|---|---|---|
+| r32-1 | South Africa | Canada | Jun 28 19:00 | SoFi Stadium, Inglewood |
+| r32-2 | Brazil | Japan | Jun 29 17:00 | NRG Stadium, Houston |
+| r32-3 | Germany | Paraguay | Jun 29 20:30 | Gillette Stadium, Foxborough |
+| r32-4 | Netherlands | Morocco | Jun 30 01:00 | Estadio BBVA, Monterrey |
+| r32-5 | Ivory Coast | Norway | Jun 30 17:00 | AT&T Stadium, Arlington |
+| r32-6 | France | Sweden | Jun 30 21:00 | MetLife Stadium, East Rutherford |
+| r32-7 | Mexico | Ecuador | Jul 1 01:00 | Estadio Azteca, Mexico City |
+| r32-8 | England | Senegal | Jul 1 16:00 | Mercedes-Benz Stadium, Atlanta |
+| r32-9 | Belgium | South Korea | Jul 1 20:00 | Lumen Field, Seattle |
+| r32-10 | USA | Bosnia & Herzegovina | Jul 2 00:00 | Levi's Stadium, Santa Clara |
+| r32-11 | Spain | Austria | Jul 2 19:00 | SoFi Stadium, Inglewood |
+| r32-12 | Portugal | Ghana | Jul 2 23:00 | BMO Field, Toronto |
+| r32-13 | Switzerland | Iran | Jul 3 03:00 | BC Place, Vancouver |
+| r32-14 | Australia | Egypt | Jul 3 18:00 | AT&T Stadium, Arlington |
+| r32-15 | Argentina | Cape Verde | Jul 3 22:00 | Hard Rock Stadium, Miami Gardens |
+| r32-16 | Colombia | Croatia | Jul 4 01:30 | Arrowhead Stadium, Kansas City |
 
-### 3. Panel always vertically centered
-- `style.css` — `.panel` switched from `position: relative` to `position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%)`
-- `@keyframes panel-enter` — both `from` and `to` keyframes now include `translate(-50%, -50%)` alongside their scale values, so the entry animation doesn't wipe out the centering transform
-- Effect: panel re-centers automatically (pure CSS) whenever match cards are added or removed
-
-### 4. Fixed 5 group stage kickoff times (UTC)
-| ID | Match | Old | Fix |
-|---|---|---|---|
-| gC4 | Brazil vs Haiti | `01:00` | `00:30` (8:30pm EDT) |
-| gD1 | USA vs Paraguay | `2026-06-12 22:00` | `2026-06-13 01:00` (6pm PDT) |
-| gD2 | Australia vs Türkiye | `2026-06-13 04:00` | `2026-06-14 04:00` (9pm PDT) |
-| gD4 | Türkiye vs Paraguay | `04:00` | `03:00` (8pm PDT) |
-| gF2 | Sweden vs Tunisia | `00:00` | `02:00` (8pm CST Monterrey) |
-
-### 5. README updated
-- Added Time Format section with WE instructions + browser console test steps
-- Updated `project.json` reference section to include both `language` and `timeformat` blocks
+### 2. CLAUDE.md expanded
+- Added `timeformat` Wallpaper Engine property documentation (was missing despite being shipped last session).
+- Added WE-manages-`project.json` constraint.
+- Clarified `homeFlag`/`awayFlag` emoji in `fixtures.js` are human-readable only — `FLAG_CODES`/`flagImg()` controls actual rendering.
+- Added `stageShort()` known-values constraint.
+- Added Mexico UTC-6/no-DST note for fixture time verification.
 
 ---
 
 ## How to test
 
-**Time format toggle (browser):**
-```js
-window.wallpaperPropertyListener.applyUserProperties({ timeformat: { value: '12h' } });
-// clock shows HH:MM:SS AM/PM; kick-off times also switch
-window.wallpaperPropertyListener.applyUserProperties({ timeformat: { value: '24h' } });
-// AM/PM disappears, all times back to 24h
-```
-
-**Language toggle:**
-```js
-window.wallpaperPropertyListener.applyUserProperties({ language: { value: 'zh' } });
-window.wallpaperPropertyListener.applyUserProperties({ language: { value: 'en' } });
-```
-
-**Dev tests:** `✓ wallpaper.js dev tests passed` in console on every page load.
+Open `index.html` in Chrome. Today's match (r32-1, South Africa vs Canada) should show at the top of the panel with a live countdown or LIVE badge depending on current time. Check the console for `✓ wallpaper.js dev tests passed`.
 
 ---
 
-## What's next (nothing urgent — ideas only)
+## What's next
 
-- **Knockout bracket fills** — as round-of-32 results come in, update `homeTeam`, `awayTeam`, `homeFlag`, `awayFlag` in `fixtures.js` for knockout entries. Add any new team names to `FLAG_CODES` in `wallpaper.js`.
-- **Steam Workshop update** — after any fixture/feature change, re-publish via Wallpaper Engine editor (Workshop ID `3746399994`).
-- **No planned features** — the wallpaper is feature-complete for the group stage.
+- **R32 results** — as matches complete, no fixture edits needed; the wallpaper auto-transitions to FT state.
+- **Round of 16 bracket fills** — R16 stubs (`W-r32-1` etc.) need updating once all R32 results are in (July 4–5). Follow the same process: update `homeTeam`, `awayTeam`, `homeFlag`, `awayFlag` and add any new team names to `FLAG_CODES` in `wallpaper.js`.
+- **R16 dates/venues** — the R16 stubs (July 4–7) have placeholder venues from before the schedule was announced. Verify and correct them the same way R32 was done this session.
+- **Steam Workshop update** — re-publish via Wallpaper Engine editor after merging (Workshop ID `3746399994`).
 
 ---
 
@@ -75,7 +67,7 @@ A **Wallpaper Engine web wallpaper** for the 2026 FIFA World Cup.
 
 The wallpaper shows:
 - Live clock (HH:MM:SS + AM/PM in 12h mode) + auto-detected timezone
-- Today / Tomorrow fixtures with country flags, kickoff times, countdowns, LIVE/FT badges
+- Today / Tomorrow fixtures with country flags, kickoff times, live "in 2h 14m" countdowns, and LIVE / FT badges
 - Pixel-art stadium background with 9 animated football legends
 - **English / 中文 language toggle** + **12h / 24h time format toggle** via Wallpaper Engine settings panel
 

@@ -18,7 +18,13 @@ node -e "eval(require('fs').readFileSync('fixtures.js','utf8')); console.log(FIX
 # Expected: 104
 ```
 
-To test language switching manually, open DevTools console and call `window.wallpaperPropertyListener.applyUserProperties({ language: { value: 'zh' } })`.
+To test properties manually via DevTools console:
+```js
+// Language
+window.wallpaperPropertyListener.applyUserProperties({ language: { value: 'zh' } });
+// Time format
+window.wallpaperPropertyListener.applyUserProperties({ timeformat: { value: '12h' } });
+```
 
 ## Architecture
 
@@ -31,7 +37,7 @@ To test language switching manually, open DevTools console and call `window.wall
 | `fixtures.js` | Declares global `FIXTURES` array (104 entries: 72 group + 32 knockout). No logic. |
 | `wallpaper.js` | Clock, timezone, filtering, card rendering, particles, language switching |
 | `style.css` | Gold Trophy theme, responsive `clamp()` sizing, all GPU-composited keyframe animations |
-| `project.json` | Wallpaper Engine manifest — defines the `language` combo property (en/zh) |
+| `project.json` | Wallpaper Engine manifest — defines user-configurable properties (`language`, `timeformat`). WE manages this file; add new properties inside `general.properties` only. |
 
 ### Script loading order matters
 
@@ -50,18 +56,30 @@ A `setInterval(tick, 1000)` drives everything. Each tick:
 - States: `upcoming` → `live` → `ft`
 - `localDateStr()` uses `en-CA` locale to always produce `YYYY-MM-DD` regardless of the user's system locale
 
-### Language support
+### Wallpaper Engine properties
 
-`STRINGS` object in `wallpaper.js` holds `en` and `zh` UI strings. `TEAM_ZH` maps English team names to Chinese. The Wallpaper Engine `language` combo property drives `setLanguage()` via `window.wallpaperPropertyListener.applyUserProperties`. Timezone long name is also locale-aware (uses `zh-CN` locale when language is Chinese).
+Both properties are wired into `window.wallpaperPropertyListener.applyUserProperties`:
+
+- **`language`** (`en`/`zh`) — drives `setLanguage()`. `STRINGS` holds UI strings; `TEAM_ZH` maps English team names to Chinese. Timezone long name is also locale-aware (`zh-CN` locale when Chinese).
+- **`timeformat`** (`24h`/`12h`) — drives `setTimeFormat()`, which resets `_lastFingerprint` to force a card re-render. Both `updateClock()` and `formatLocalTime()` respect `_timeFormat`. In 12h mode, the `#clock-ampm` span shows AM/PM.
+
+### Flag rendering
+
+`flagImg(teamName)` in `wallpaper.js` renders flags via `flagcdn.com` using `FLAG_CODES` (ISO 3166-1 alpha-2 codes). The `homeFlag`/`awayFlag` emoji fields in `fixtures.js` are human-readable markers only — they are not used in rendering.
 
 ## Updating Fixtures for Knockout Rounds
 
-As match results come in, update only `homeTeam`, `awayTeam`, `homeFlag`, and `awayFlag` for the relevant knockout entries in `fixtures.js`. The rendering logic handles all other display. Bracket stub entries (e.g. `"1A"`, `"W-r32-1"`) have `homeFlag`/`awayFlag` set to `"🏳️"`.
+As match results come in, update only `homeTeam` and `awayTeam` for the relevant knockout entries in `fixtures.js`. Bracket stub values (e.g. `"1A"`, `"W-r32-1"`, `"3rd"`) get replaced with the actual team name.
 
-`FLAG_CODES` in `wallpaper.js` maps team names to ISO 3166-1 alpha-2 codes for flag images. Add an entry there for any new team name introduced.
+Also update `homeFlag`/`awayFlag` to the correct country flag emoji (for human readability in the data file).
+
+Add an entry to `FLAG_CODES` in `wallpaper.js` for any new team name not already present — this is what actually controls flag display.
+
+The `stage` field must match one of the values handled by `stageShort()`: `"Group A"–"Group L"`, `"Round of 32"`, `"Round of 16"`, `"Quarter-final"`, `"Semi-final"`, `"Third Place"`, `"Final"`.
 
 ## Design Constraints
 
 - All animations use `transform` and `opacity` only (GPU-composited — no layout thrash)
 - Panel width: `clamp(340px, 30vw, 480px)` — never touch this without checking both narrow and ultrawide viewports
 - `bg.js` sprites draw on `canvas` with pixel-block primitives (block size `P = max(3, floor(min(W,H)/240))`) — sprite coordinates are in block units, not pixels
+- Mexico abolished DST in 2023 and is permanently UTC-6 — relevant when verifying kick-off times for Monterrey, Guadalajara, and Mexico City venues
