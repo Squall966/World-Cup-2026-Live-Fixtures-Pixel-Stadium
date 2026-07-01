@@ -1,81 +1,118 @@
 # Handoff — 2026 World Cup Fixtures Wallpaper
 
-_Last updated: 2026-06-28_
+_Last updated: 2026-07-02_
 
-## Current state: `update/knock-out-32` — ready for PR
+## Goal
 
-All Round of 32 fixtures have been confirmed and committed. The branch is pushed and awaiting merge.
+Keep `fixtures.js` accurate as the 2026 World Cup progresses — replacing bracket stubs with real teams, and ensuring all kick-off times, venues, and bracket pairings are correct so the wallpaper shows the right match at the right time.
 
 ---
 
-## What was shipped (this session)
+## Current state (end of session)
 
-### 1. Round of 32 fixtures — confirmed bracket
-- All 16 R32 entries in `fixtures.js` replaced from placeholder stubs (`1A`, `2C`, `3rd` etc.) to real teams, correct UTC kick-off times, and correct venues.
-- Times verified across **Fox Sports**, **NBC Sports**, **Sky Sports**, and **CBS Sports**. FIFA.com was attempted but returned no content.
-- One previously ambiguous match (USA vs Bosnia & Herzegovina, r32-10) confirmed at `2026-07-02 00:00 UTC` (8 PM ET July 1) — consistent across Fox and NBC.
-- R32 now runs **June 28 – July 4 (01:30 UTC)**; r32-16 (Colombia vs Croatia) is the last match at Arrowhead, Kansas City.
+The wallpaper is live on Steam Workshop (ID `3746399994`) and functional. All R32 fixtures are now correct — teams, times, venues. R16 first four matchups are confirmed and filled in. QF through Final stubs have correct dates, times, venues, and bracket pairings.
 
-| r32 # | Home | Away | UTC | Venue |
+**On the pitch right now (2026-07-02):**
+- r32-9 Belgium vs Senegal — was **2–2 at 118'** (extra time) when session ended. Result still TBD. Winner goes to r16-6 (Lumen Field, Seattle, Jul 7 00:00 UTC).
+- r32-10 USA vs Bosnia & Herzegovina — kicks off at 00:00 UTC Jul 2 (imminent). Winner goes to r16-6.
+
+### Confirmed R32 results so far
+
+| ID | Match | Result |
+|---|---|---|
+| r32-1 | South Africa vs Canada | 0–1 Canada |
+| r32-2 | Brazil vs Japan | 2–1 Brazil |
+| r32-3 | Germany vs Paraguay | 1–1 (Paraguay 4–3 pens) |
+| r32-4 | Netherlands vs Morocco | 1–1 (Morocco 3–2 pens) |
+| r32-5 | Côte d'Ivoire vs Norway | 1–2 Norway |
+| r32-6 | France vs Sweden | 3–0 France |
+| r32-7 | Mexico vs Ecuador | 2–0 Mexico |
+| r32-8 | England vs DR Congo | 2–1 England |
+| r32-9 | Belgium vs Senegal | 2–2 AET (TBD) |
+| r32-10 | USA vs Bosnia & Herzegovina | TBD |
+| r32-11 | Spain vs Austria | Jul 3 |
+| r32-12 | Portugal vs Croatia | Jul 3 |
+| r32-13 | Switzerland vs Algeria | Jul 3 |
+| r32-14 | Australia vs Egypt | Jul 4 |
+| r32-15 | Argentina vs Cabo Verde | Jul 4 |
+| r32-16 | Colombia vs Ghana | Jul 4 |
+
+### Confirmed R16 matchups (in fixtures.js)
+
+| ID | Home | Away | UTC | Venue |
 |---|---|---|---|---|
-| r32-1 | South Africa | Canada | Jun 28 19:00 | SoFi Stadium, Inglewood |
-| r32-2 | Brazil | Japan | Jun 29 17:00 | NRG Stadium, Houston |
-| r32-3 | Germany | Paraguay | Jun 29 20:30 | Gillette Stadium, Foxborough |
-| r32-4 | Netherlands | Morocco | Jun 30 01:00 | Estadio BBVA, Monterrey |
-| r32-5 | Ivory Coast | Norway | Jun 30 17:00 | AT&T Stadium, Arlington |
-| r32-6 | France | Sweden | Jun 30 21:00 | MetLife Stadium, East Rutherford |
-| r32-7 | Mexico | Ecuador | Jul 1 01:00 | Estadio Azteca, Mexico City |
-| r32-8 | England | Senegal | Jul 1 16:00 | Mercedes-Benz Stadium, Atlanta |
-| r32-9 | Belgium | South Korea | Jul 1 20:00 | Lumen Field, Seattle |
-| r32-10 | USA | Bosnia & Herzegovina | Jul 2 00:00 | Levi's Stadium, Santa Clara |
-| r32-11 | Spain | Austria | Jul 2 19:00 | SoFi Stadium, Inglewood |
-| r32-12 | Portugal | Ghana | Jul 2 23:00 | BMO Field, Toronto |
-| r32-13 | Switzerland | Iran | Jul 3 03:00 | BC Place, Vancouver |
-| r32-14 | Australia | Egypt | Jul 3 18:00 | AT&T Stadium, Arlington |
-| r32-15 | Argentina | Cape Verde | Jul 3 22:00 | Hard Rock Stadium, Miami Gardens |
-| r32-16 | Colombia | Croatia | Jul 4 01:30 | Arrowhead Stadium, Kansas City |
+| r16-1 | Canada | Morocco | Jul 4 17:00 | NRG Stadium, Houston |
+| r16-2 | Paraguay | France | Jul 4 21:00 | Lincoln Financial Field, Philadelphia |
+| r16-3 | Brazil | Norway | Jul 5 20:00 | MetLife Stadium, East Rutherford |
+| r16-4 | Mexico | England | Jul 6 00:00 | Estadio Azteca, Mexico City |
+| r16-5 | W-r32-12 (Por/Cro) | W-r32-11 (Esp/Aut) | Jul 6 19:00 | AT&T Stadium, Dallas |
+| r16-6 | W-r32-10 (USA/Bos) | W-r32-9 (Bel/Sen) | Jul 7 00:00 | Lumen Field, Seattle |
+| r16-7 | W-r32-14 (Aus/Egy) | W-r32-15 (Arg/Cpv) | Jul 7 16:00 | Mercedes-Benz Stadium, Atlanta |
+| r16-8 | W-r32-13 (Swi/Alg) | W-r32-16 (Col/Gha) | Jul 7 20:00 | BC Place, Vancouver |
 
-### 2. CLAUDE.md expanded
-- Added `timeformat` Wallpaper Engine property documentation (was missing despite being shipped last session).
-- Added WE-manages-`project.json` constraint.
-- Clarified `homeFlag`/`awayFlag` emoji in `fixtures.js` are human-readable only — `FLAG_CODES`/`flagImg()` controls actual rendering.
-- Added `stageShort()` known-values constraint.
-- Added Mexico UTC-6/no-DST note for fixture time verification.
+### QF / SF / Final stubs (dates, times, venues verified against FIFA)
+
+| ID | UTC | Venue |
+|---|---|---|
+| qf-1 | Jul 9 20:00 | Gillette Stadium, Foxborough |
+| qf-2 | Jul 10 19:00 | SoFi Stadium, Inglewood |
+| qf-3 | Jul 11 21:00 | Hard Rock Stadium, Miami Gardens |
+| qf-4 | Jul 12 01:00 | Arrowhead Stadium, Kansas City |
+| sf-1 | Jul 14 19:00 | AT&T Stadium, Dallas |
+| sf-2 | Jul 15 19:00 | Mercedes-Benz Stadium, Atlanta |
+| 3rd  | Jul 18 21:00 | Hard Rock Stadium, Miami Gardens |
+| final | Jul 19 19:00 | MetLife Stadium, East Rutherford |
 
 ---
 
-## How to test
+## Files actively edited
 
-Open `index.html` in Chrome. Today's match (r32-1, South Africa vs Canada) should show at the top of the panel with a live countdown or LIVE badge depending on current time. Check the console for `✓ wallpaper.js dev tests passed`.
-
----
-
-## What's next
-
-- **R32 results** — as matches complete, no fixture edits needed; the wallpaper auto-transitions to FT state.
-- **Round of 16 bracket fills** — R16 stubs (`W-r32-1` etc.) need updating once all R32 results are in (July 4–5). Follow the same process: update `homeTeam`, `awayTeam`, `homeFlag`, `awayFlag` and add any new team names to `FLAG_CODES` in `wallpaper.js`.
-- **R16 dates/venues** — the R16 stubs (July 4–7) have placeholder venues from before the schedule was announced. Verify and correct them the same way R32 was done this session.
-- **Steam Workshop update** — re-publish via Wallpaper Engine editor after merging (Workshop ID `3746399994`).
+- `fixtures.js` — the only file that needs ongoing updates as results come in
 
 ---
 
-## Project background
+## What failed this session
 
-A **Wallpaper Engine web wallpaper** for the 2026 FIFA World Cup.
+### 1. Web search for fixtures (do not use)
+Used `WebSearch` to look up R32 bracket — got 5 wrong opponents:
+- r32-8: said England vs Senegal (correct: DR Congo)
+- r32-9: said Belgium vs South Korea (correct: Senegal)
+- r32-12: said Portugal vs Ghana (correct: Croatia)
+- r32-13: said Switzerland vs Iran (correct: Algeria)
+- r32-16: said Colombia vs Croatia (correct: Ghana)
 
-**Published on Steam Workshop** — ID `3746399994`, URL `steam://url/CommunityFilePage/3746399994`.
+### 2. WebFetch on FIFA.com
+`https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures` — JS-rendered, returns empty content. Can't be scraped.
 
-The wallpaper shows:
-- Live clock (HH:MM:SS + AM/PM in 12h mode) + auto-detected timezone
-- Today / Tomorrow fixtures with country flags, kickoff times, live "in 2h 14m" countdowns, and LIVE / FT badges
-- Pixel-art stadium background with 9 animated football legends
-- **English / 中文 language toggle** + **12h / 24h time format toggle** via Wallpaper Engine settings panel
+### 3. WebFetch on DuckDuckGo
+Same problem — JS-rendered, no fixture data returned.
 
-### Architecture reference
+---
 
-See `CLAUDE.md` for full architecture docs. Key notes:
-- `bg.js` loads before the panel div — injects canvas via `document.body.prepend(canvas)`
-- `fixtures.js` must load before `wallpaper.js` (FIXTURES global)
-- `setInterval(tick, 1000)` drives everything; fingerprint diff avoids full re-render every second
-- `project.json` — WE generates/manages this file; add new properties inside `general.properties`
-- Mexico is permanently UTC-6 (abolished DST in 2023) — important for Monterrey/Guadalajara/Mexico City venue times
+## Official source
+
+**Always use this URL:**
+`https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures?country=NZ&wtw-filter=ALL&sortBy=date`
+
+Since WebFetch can't scrape it, the workflow is:
+1. User opens that URL in their browser
+2. Opens DevTools console (F12) and runs: `copy(document.body.innerText)`
+3. Pastes the clipboard into chat
+4. Update `fixtures.js` from the raw text
+
+---
+
+## Next steps
+
+In priority order:
+
+1. **Update Belgium vs Senegal result** (r32-9) — and fill in r16-6 home team once known
+2. **Update USA vs Bosnia result** (r32-10) — and fill in r16-6 away team once known
+3. **Jul 3 matches** — fill Spain/Austria (r32-11), Portugal/Croatia (r32-12), Switzerland/Algeria (r32-13) → then update r16-5 and r16-8 stubs
+4. **Jul 4 matches** — fill Australia/Egypt (r32-14), Argentina/Cabo Verde (r32-15), Colombia/Ghana (r32-16) → then update r16-7 stub
+5. **R16 results** — fill qf-1 through qf-4 as R16 finishes (Jul 5–8)
+6. **QF results** — fill sf-1, sf-2 (Jul 9–12)
+7. **SF results** — fill 3rd and final (Jul 14–15)
+8. **After the Final** — consider publishing a post-tournament Steam Workshop update
+
+Each update: paste FIFA page text → I update `fixtures.js` → commit + push.

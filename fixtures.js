@@ -120,38 +120,38 @@ const FIXTURES = [
   { id:"r32-5",  date:"2026-06-30", time:"17:00", homeTeam:"Ivory Coast",         homeFlag:"🇨🇮", awayTeam:"Norway",               awayFlag:"🇳🇴", stage:"Round of 32", venue:"AT&T Stadium, Arlington" },
   { id:"r32-6",  date:"2026-06-30", time:"21:00", homeTeam:"France",              homeFlag:"🇫🇷", awayTeam:"Sweden",               awayFlag:"🇸🇪", stage:"Round of 32", venue:"MetLife Stadium, East Rutherford" },
   { id:"r32-7",  date:"2026-07-01", time:"01:00", homeTeam:"Mexico",              homeFlag:"🇲🇽", awayTeam:"Ecuador",              awayFlag:"🇪🇨", stage:"Round of 32", venue:"Estadio Azteca, Mexico City" },
-  { id:"r32-8",  date:"2026-07-01", time:"16:00", homeTeam:"England",             homeFlag:"🏴󠁧󠁢󠁥󠁮󠁧󠁿", awayTeam:"Senegal",              awayFlag:"🇸🇳", stage:"Round of 32", venue:"Mercedes-Benz Stadium, Atlanta" },
-  { id:"r32-9",  date:"2026-07-01", time:"20:00", homeTeam:"Belgium",             homeFlag:"🇧🇪", awayTeam:"South Korea",          awayFlag:"🇰🇷", stage:"Round of 32", venue:"Lumen Field, Seattle" },
+  { id:"r32-8",  date:"2026-07-01", time:"16:00", homeTeam:"England",             homeFlag:"🏴󠁧󠁢󠁥󠁮󠁧󠁿", awayTeam:"DR Congo",             awayFlag:"🇨🇩", stage:"Round of 32", venue:"Mercedes-Benz Stadium, Atlanta" },
+  { id:"r32-9",  date:"2026-07-01", time:"20:00", homeTeam:"Belgium",             homeFlag:"🇧🇪", awayTeam:"Senegal",              awayFlag:"🇸🇳", stage:"Round of 32", venue:"Lumen Field, Seattle" },
   { id:"r32-10", date:"2026-07-02", time:"00:00", homeTeam:"USA",                 homeFlag:"🇺🇸", awayTeam:"Bosnia & Herzegovina", awayFlag:"🇧🇦", stage:"Round of 32", venue:"Levi's Stadium, Santa Clara" },
   { id:"r32-11", date:"2026-07-02", time:"19:00", homeTeam:"Spain",               homeFlag:"🇪🇸", awayTeam:"Austria",              awayFlag:"🇦🇹", stage:"Round of 32", venue:"SoFi Stadium, Inglewood" },
-  { id:"r32-12", date:"2026-07-02", time:"23:00", homeTeam:"Portugal",            homeFlag:"🇵🇹", awayTeam:"Ghana",                awayFlag:"🇬🇭", stage:"Round of 32", venue:"BMO Field, Toronto" },
-  { id:"r32-13", date:"2026-07-03", time:"03:00", homeTeam:"Switzerland",         homeFlag:"🇨🇭", awayTeam:"Iran",                 awayFlag:"🇮🇷", stage:"Round of 32", venue:"BC Place, Vancouver" },
+  { id:"r32-12", date:"2026-07-02", time:"23:00", homeTeam:"Portugal",            homeFlag:"🇵🇹", awayTeam:"Croatia",              awayFlag:"🇭🇷", stage:"Round of 32", venue:"BMO Field, Toronto" },
+  { id:"r32-13", date:"2026-07-03", time:"03:00", homeTeam:"Switzerland",         homeFlag:"🇨🇭", awayTeam:"Algeria",              awayFlag:"🇩🇿", stage:"Round of 32", venue:"BC Place, Vancouver" },
   { id:"r32-14", date:"2026-07-03", time:"18:00", homeTeam:"Australia",           homeFlag:"🇦🇺", awayTeam:"Egypt",                awayFlag:"🇪🇬", stage:"Round of 32", venue:"AT&T Stadium, Arlington" },
   { id:"r32-15", date:"2026-07-03", time:"22:00", homeTeam:"Argentina",           homeFlag:"🇦🇷", awayTeam:"Cape Verde",           awayFlag:"🇨🇻", stage:"Round of 32", venue:"Hard Rock Stadium, Miami Gardens" },
-  { id:"r32-16", date:"2026-07-04", time:"01:30", homeTeam:"Colombia",            homeFlag:"🇨🇴", awayTeam:"Croatia",              awayFlag:"🇭🇷", stage:"Round of 32", venue:"Arrowhead Stadium, Kansas City" },
+  { id:"r32-16", date:"2026-07-04", time:"01:30", homeTeam:"Colombia",            homeFlag:"🇨🇴", awayTeam:"Ghana",                awayFlag:"🇬🇭", stage:"Round of 32", venue:"Arrowhead Stadium, Kansas City" },
 
-  // ── ROUND OF 16 stubs (July 4 – 7) ───────────────────────────────────────
-  { id:"r16-1", date:"2026-07-04", time:"18:00", homeTeam:"W-r32-1",  homeFlag:"🏳️", awayTeam:"W-r32-2",  awayFlag:"🏳️", stage:"Round of 16", venue:"MetLife Stadium, East Rutherford" },
-  { id:"r16-2", date:"2026-07-04", time:"22:00", homeTeam:"W-r32-3",  homeFlag:"🏳️", awayTeam:"W-r32-4",  awayFlag:"🏳️", stage:"Round of 16", venue:"SoFi Stadium, Inglewood" },
-  { id:"r16-3", date:"2026-07-05", time:"18:00", homeTeam:"W-r32-5",  homeFlag:"🏳️", awayTeam:"W-r32-6",  awayFlag:"🏳️", stage:"Round of 16", venue:"AT&T Stadium, Arlington" },
-  { id:"r16-4", date:"2026-07-05", time:"22:00", homeTeam:"W-r32-7",  homeFlag:"🏳️", awayTeam:"W-r32-8",  awayFlag:"🏳️", stage:"Round of 16", venue:"Levi's Stadium, Santa Clara" },
-  { id:"r16-5", date:"2026-07-06", time:"18:00", homeTeam:"W-r32-9",  homeFlag:"🏳️", awayTeam:"W-r32-10", awayFlag:"🏳️", stage:"Round of 16", venue:"Gillette Stadium, Foxborough" },
-  { id:"r16-6", date:"2026-07-06", time:"22:00", homeTeam:"W-r32-11", homeFlag:"🏳️", awayTeam:"W-r32-12", awayFlag:"🏳️", stage:"Round of 16", venue:"Mercedes-Benz Stadium, Atlanta" },
-  { id:"r16-7", date:"2026-07-07", time:"18:00", homeTeam:"W-r32-13", homeFlag:"🏳️", awayTeam:"W-r32-14", awayFlag:"🏳️", stage:"Round of 16", venue:"Arrowhead Stadium, Kansas City" },
-  { id:"r16-8", date:"2026-07-07", time:"22:00", homeTeam:"W-r32-15", homeFlag:"🏳️", awayTeam:"W-r32-16", awayFlag:"🏳️", stage:"Round of 16", venue:"NRG Stadium, Houston" },
+  // ── ROUND OF 16 (July 4 – 7) ─────────────────────────────────────────────
+  { id:"r16-1", date:"2026-07-04", time:"17:00", homeTeam:"Canada",    homeFlag:"🇨🇦", awayTeam:"Morocco",   awayFlag:"🇲🇦", stage:"Round of 16", venue:"NRG Stadium, Houston" },
+  { id:"r16-2", date:"2026-07-04", time:"21:00", homeTeam:"Paraguay",  homeFlag:"🇵🇾", awayTeam:"France",    awayFlag:"🇫🇷", stage:"Round of 16", venue:"Lincoln Financial Field, Philadelphia" },
+  { id:"r16-3", date:"2026-07-05", time:"20:00", homeTeam:"Brazil",    homeFlag:"🇧🇷", awayTeam:"Norway",    awayFlag:"🇳🇴", stage:"Round of 16", venue:"MetLife Stadium, East Rutherford" },
+  { id:"r16-4", date:"2026-07-06", time:"00:00", homeTeam:"Mexico",    homeFlag:"🇲🇽", awayTeam:"England",   awayFlag:"🏴󠁧󠁢󠁥󠁮󠁧󠁿", stage:"Round of 16", venue:"Estadio Azteca, Mexico City" },
+  { id:"r16-5", date:"2026-07-06", time:"19:00", homeTeam:"W-r32-12", homeFlag:"🏳️", awayTeam:"W-r32-11",  awayFlag:"🏳️", stage:"Round of 16", venue:"AT&T Stadium, Dallas" },
+  { id:"r16-6", date:"2026-07-07", time:"00:00", homeTeam:"W-r32-10", homeFlag:"🏳️", awayTeam:"W-r32-9",   awayFlag:"🏳️", stage:"Round of 16", venue:"Lumen Field, Seattle" },
+  { id:"r16-7", date:"2026-07-07", time:"16:00", homeTeam:"W-r32-14", homeFlag:"🏳️", awayTeam:"W-r32-15",  awayFlag:"🏳️", stage:"Round of 16", venue:"Mercedes-Benz Stadium, Atlanta" },
+  { id:"r16-8", date:"2026-07-07", time:"20:00", homeTeam:"W-r32-13", homeFlag:"🏳️", awayTeam:"W-r32-16",  awayFlag:"🏳️", stage:"Round of 16", venue:"BC Place, Vancouver" },
 
-  // ── QUARTER-FINALS stubs (July 9 – 10) ───────────────────────────────────
-  { id:"qf-1", date:"2026-07-09", time:"18:00", homeTeam:"W-r16-1", homeFlag:"🏳️", awayTeam:"W-r16-2", awayFlag:"🏳️", stage:"Quarter-final", venue:"MetLife Stadium, East Rutherford" },
-  { id:"qf-2", date:"2026-07-09", time:"22:00", homeTeam:"W-r16-3", homeFlag:"🏳️", awayTeam:"W-r16-4", awayFlag:"🏳️", stage:"Quarter-final", venue:"SoFi Stadium, Inglewood" },
-  { id:"qf-3", date:"2026-07-10", time:"18:00", homeTeam:"W-r16-5", homeFlag:"🏳️", awayTeam:"W-r16-6", awayFlag:"🏳️", stage:"Quarter-final", venue:"AT&T Stadium, Arlington" },
-  { id:"qf-4", date:"2026-07-10", time:"22:00", homeTeam:"W-r16-7", homeFlag:"🏳️", awayTeam:"W-r16-8", awayFlag:"🏳️", stage:"Quarter-final", venue:"MetLife Stadium, East Rutherford" },
+  // ── QUARTER-FINALS stubs (July 9 – 12) ───────────────────────────────────
+  { id:"qf-1", date:"2026-07-09", time:"20:00", homeTeam:"W-r16-1", homeFlag:"🏳️", awayTeam:"W-r16-2", awayFlag:"🏳️", stage:"Quarter-final", venue:"Gillette Stadium, Foxborough" },
+  { id:"qf-2", date:"2026-07-10", time:"19:00", homeTeam:"W-r16-5", homeFlag:"🏳️", awayTeam:"W-r16-6", awayFlag:"🏳️", stage:"Quarter-final", venue:"SoFi Stadium, Inglewood" },
+  { id:"qf-3", date:"2026-07-11", time:"21:00", homeTeam:"W-r16-3", homeFlag:"🏳️", awayTeam:"W-r16-4", awayFlag:"🏳️", stage:"Quarter-final", venue:"Hard Rock Stadium, Miami Gardens" },
+  { id:"qf-4", date:"2026-07-12", time:"01:00", homeTeam:"W-r16-7", homeFlag:"🏳️", awayTeam:"W-r16-8", awayFlag:"🏳️", stage:"Quarter-final", venue:"Arrowhead Stadium, Kansas City" },
 
   // ── SEMI-FINALS stubs (July 14 – 15) ─────────────────────────────────────
-  { id:"sf-1", date:"2026-07-14", time:"22:00", homeTeam:"W-qf-1", homeFlag:"🏳️", awayTeam:"W-qf-2", awayFlag:"🏳️", stage:"Semi-final", venue:"MetLife Stadium, East Rutherford" },
-  { id:"sf-2", date:"2026-07-15", time:"22:00", homeTeam:"W-qf-3", homeFlag:"🏳️", awayTeam:"W-qf-4", awayFlag:"🏳️", stage:"Semi-final", venue:"SoFi Stadium, Inglewood" },
+  { id:"sf-1", date:"2026-07-14", time:"19:00", homeTeam:"W-qf-1", homeFlag:"🏳️", awayTeam:"W-qf-2", awayFlag:"🏳️", stage:"Semi-final", venue:"AT&T Stadium, Dallas" },
+  { id:"sf-2", date:"2026-07-15", time:"19:00", homeTeam:"W-qf-3", homeFlag:"🏳️", awayTeam:"W-qf-4", awayFlag:"🏳️", stage:"Semi-final", venue:"Mercedes-Benz Stadium, Atlanta" },
 
   // ── THIRD PLACE + FINAL stubs ─────────────────────────────────────────────
-  { id:"3rd",   date:"2026-07-18", time:"22:00", homeTeam:"L-sf-1", homeFlag:"🏳️", awayTeam:"L-sf-2", awayFlag:"🏳️", stage:"Third Place", venue:"AT&T Stadium, Arlington" },
-  { id:"final", date:"2026-07-19", time:"22:00", homeTeam:"W-sf-1", homeFlag:"🏳️", awayTeam:"W-sf-2", awayFlag:"🏳️", stage:"Final",       venue:"MetLife Stadium, East Rutherford" }
+  { id:"3rd",   date:"2026-07-18", time:"21:00", homeTeam:"L-sf-1", homeFlag:"🏳️", awayTeam:"L-sf-2", awayFlag:"🏳️", stage:"Third Place", venue:"Hard Rock Stadium, Miami Gardens" },
+  { id:"final", date:"2026-07-19", time:"19:00", homeTeam:"W-sf-1", homeFlag:"🏳️", awayTeam:"W-sf-2", awayFlag:"🏳️", stage:"Final",       venue:"MetLife Stadium, East Rutherford" }
 
 ];
